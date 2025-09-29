@@ -1,0 +1,25 @@
+{
+  "name": "bluecrane.pro",
+  "version": "1.0.0",
+  "description": "A new project setup with GitHub integration.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/masterbainter/bluecrane.pro.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/masterbainter/bluecrane.pro/issues"
+  },
+  "homepage": "https://github.com/masterbainter/bluecrane.pro#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.55.1",
+    "playwright": "^1.55.1"
+  }
+}
