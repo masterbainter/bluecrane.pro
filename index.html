@@ -3,29 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blue Crane Consulting and Services | Construction Project Experts</title>
-    <meta name="description" content="Blue Crane offers expert construction-based project consulting and services for efficient, sustainable outcomes. From planning to execution, we ensure quality and innovation.">
+    <title>Blue Crane | Consulting & Construction Services</title>
+    <meta name="description" content="Blue Crane offers expert construction-based project consulting and hands-on building services for efficient, sustainable outcomes.">
+    
+    <!-- Favicon Links -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://605designs.com/demos/bluecrane-pro/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://605designs.com/demos/bluecrane-pro/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://605designs.com/demos/bluecrane-pro/favicon_io/favicon-16x16.png">
+    <link rel="icon" href="https://605designs.com/demos/bluecrane-pro/favicon_io/favicon.ico">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-
+    
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+    
     <!-- Custom Styles & Configuration -->
     <style>
         /* Custom base styles */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #121212;
+            background-color: #121212; /* Near Black Base */
             color: #E0E0E0;
         }
 
-        /* Hero section background image with overlay */
-        .hero-section {
-            background-image: linear-gradient(rgba(0, 31, 63, 0.7), rgba(18, 18, 18, 0.9)), url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+        .main-section {
+            background-image: linear-gradient(rgba(18, 18, 18, 0.7), rgba(18, 18, 18, 0.7)), url('https://605designs.com/demos/bluecrane-pro/chadproject/commons01.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .about-section {
+            background-image: linear-gradient(rgba(24, 24, 24, 0.85), rgba(24, 24, 24, 0.85)), url('https://605designs.com/demos/bluecrane-pro/chadproject/arial01cut.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -37,7 +49,7 @@
             transform: translateY(30px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
-
+        
         .reveal-visible {
             opacity: 1;
             transform: translateY(0);
@@ -45,9 +57,17 @@
 
         /* Custom focus styles for accessibility */
         :focus-visible {
-            outline: 2px solid #38bdf8; /* A light blue outline */
+            outline: 2px solid #00a9e3; 
             outline-offset: 2px;
             border-radius: 4px;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-content {
+            transition: transform 0.3s ease;
         }
     </style>
 </head>
@@ -56,19 +76,14 @@
     <!-- Header -->
     <header id="header" class="bg-[#1a1a1a]/80 backdrop-blur-lg sticky top-0 z-50 transition-all duration-300">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#home" class="flex items-center space-x-2 text-2xl font-bold text-white">
-                <!-- Simple Crane Icon using SVG -->
-                <svg class="w-8 h-8 text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205l3 1m1.5.5-1.5-.5M6.75 7.364V3h-3v18m3-13.636l1.5-2.25L12 3.5m0 0l3 1.75m-3-1.75V21" />
-                </svg>
-                <span>Blue Crane</span>
+            <a href="#offerings" class="flex items-center">
+                <img src="https://605designs.com/demos/bluecrane-pro/BCLOGOWhiteLetters.png" alt="Blue Crane Logo" class="h-12">
             </a>
             <!-- Desktop Menu -->
             <div class="hidden md:flex items-center space-x-8">
-                <a href="#home" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Home</a>
-                <a href="#about" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">About</a>
-                <a href="#services" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Services</a>
-                <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded-lg transition-transform duration-300 hover:scale-105">Contact Us</a>
+                <a href="#offerings" class="text-gray-300 hover:text-[#00a9e3] transition-colors duration-300">Offerings</a>
+                <a href="#about" class="text-gray-300 hover:text-[#00a9e3] transition-colors duration-300">About</a>
+                <a href="#contact" class="bg-[#0091C6] hover:bg-[#007aa8] text-white font-semibold px-5 py-2 rounded-lg transition-transform duration-300 hover:scale-105">Get in Touch</a>
             </div>
             <!-- Mobile Menu Button -->
             <button id="mobile-menu-button" class="md:hidden text-gray-300 focus:outline-none">
@@ -79,120 +94,86 @@
         </nav>
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2">
-            <a href="#home" class="block text-gray-300 hover:text-blue-400 transition-colors duration-300 py-2">Home</a>
-            <a href="#about" class="block text-gray-300 hover:text-blue-400 transition-colors duration-300 py-2">About</a>
-            <a href="#services" class="block text-gray-300 hover:text-blue-400 transition-colors duration-300 py-2">Services</a>
-            <a href="#contact" class="block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded-lg transition-transform duration-300 hover:scale-105 mt-2 text-center">Contact Us</a>
+            <a href="#offerings" class="block text-gray-300 hover:text-[#00a9e3] transition-colors duration-300 py-2">Offerings</a>
+            <a href="#about" class="block text-gray-300 hover:text-[#00a9e3] transition-colors duration-300 py-2">About</a>
+            <a href="#contact" class="block bg-[#0091C6] hover:bg-[#007aa8] text-white font-semibold px-5 py-2 rounded-lg transition-transform duration-300 hover:scale-105 mt-2 text-center">Get in Touch</a>
         </div>
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section id="home" class="hero-section h-screen flex items-center justify-center text-center">
-            <div class="max-w-4xl mx-auto px-6">
-                <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-4 reveal">Blue Crane Consulting and Services</h1>
-                <p class="text-lg md:text-2xl text-gray-300 reveal" style="transition-delay: 200ms;">Expert Construction-Based Project Consulting and Services for Efficient, Sustainable Outcomes.</p>
-                <a href="#services" class="mt-8 inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-lg transition-transform duration-300 hover:scale-105 reveal" style="transition-delay: 400ms;">Explore Our Services</a>
+        <!-- Offerings Section (New Hero) -->
+        <section id="offerings" class="main-section py-20 md:py-32">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-4 reveal">Blue Crane</h1>
+                    <p class="text-lg md:text-2xl text-gray-300 max-w-3xl mx-auto reveal" style="transition-delay: 200ms;">High-Level Project Consulting and Hands-On Building Services for Efficient, Sustainable Outcomes.</p>
+                </div>
+
+                <!-- Offering Buttons -->
+                <div class="flex flex-col md:flex-row justify-center items-center gap-6 mt-12 reveal" style="transition-delay: 400ms;">
+                    <button id="open-consulting-modal" class="bg-[#0091C6] hover:bg-[#007aa8] text-white font-bold py-4 px-8 rounded-lg transition-transform duration-300 hover:scale-105 w-full md:w-auto">
+                        Explore Consulting
+                    </button>
+                    <button id="open-services-modal" class="bg-[#0091C6] hover:bg-[#007aa8] text-white font-bold py-4 px-8 rounded-lg transition-transform duration-300 hover:scale-105 w-full md:w-auto">
+                        Explore Services
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Visual Break / Mission Statement -->
+        <section class="bg-black py-20 md:py-24">
+            <div class="container mx-auto px-6 text-center max-w-4xl">
+                <p class="text-2xl md:text-3xl font-light text-gray-300 italic leading-relaxed reveal">
+                    "Where expertise meets execution—transforming your vision into a tangible asset with precision and integrity."
+                </p>
+                <div class="w-24 h-1 bg-[#0091C6] mx-auto mt-8 reveal" style="transition-delay: 200ms;"></div>
             </div>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="py-20 md:py-32 bg-[#181818]">
+        <section id="about" class="about-section py-20 md:py-32">
             <div class="container mx-auto px-6 max-w-4xl text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 reveal">Building the Future, Together</h2>
-                <div class="w-24 h-1 bg-blue-500 mx-auto mb-8 reveal"></div>
-                <p class="text-lg text-gray-400 leading-relaxed reveal">
-                    At Blue Crane, we provide tailored consulting and services for construction projects of all scales. From initial planning to final execution, our expert team is dedicated to ensuring quality, compliance, and innovation every step of the way. We partner with our clients to transform complex challenges into high-value, sustainable assets.
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 reveal">My Approach to Construction Solutions</h2>
+                <div class="w-24 h-1 bg-[#0091C6] mx-auto mb-8 reveal"></div>
+                <p class="text-lg text-gray-300 leading-relaxed reveal">
+                    I specialize in two distinct streams of expertise. I provide tailored, high-level **consulting** for large-scale construction projects and offer skilled, hands-on **services** for building, repair, and finishing tasks. I partner directly with my clients to transform both complex challenges and practical needs into high-value assets.
                 </p>
             </div>
         </section>
 
-        <!-- Services Section -->
-        <section id="services" class="py-20 md:py-32">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 reveal">Our Expertise</h2>
-                    <p class="text-lg text-gray-400 max-w-2xl mx-auto reveal">We offer a comprehensive suite of services to guide your project to success.</p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Service Card 1 -->
-                    <div class="bg-[#1e1e1e] p-8 rounded-xl shadow-lg hover:shadow-blue-500/20 transform hover:-translate-y-2 transition-all duration-300 reveal">
-                        <div class="bg-blue-600/10 text-blue-400 rounded-full w-16 h-16 flex items-center justify-center mb-6">
-                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-3">Project Management</h3>
-                        <p class="text-gray-400">End-to-end oversight to keep your project on schedule and within budget, from conception to completion.</p>
-                    </div>
-                    <!-- Service Card 2 -->
-                    <div class="bg-[#1e1e1e] p-8 rounded-xl shadow-lg hover:shadow-blue-500/20 transform hover:-translate-y-2 transition-all duration-300 reveal" style="transition-delay: 100ms;">
-                        <div class="bg-blue-600/10 text-blue-400 rounded-full w-16 h-16 flex items-center justify-center mb-6">
-                           <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-3">Site Analysis</h3>
-                        <p class="text-gray-400">Comprehensive feasibility studies and site evaluations to identify opportunities and mitigate potential issues.</p>
-                    </div>
-                    <!-- Service Card 3 -->
-                    <div class="bg-[#1e1e1e] p-8 rounded-xl shadow-lg hover:shadow-blue-500/20 transform hover:-translate-y-2 transition-all duration-300 reveal" style="transition-delay: 200ms;">
-                        <div class="bg-blue-600/10 text-blue-400 rounded-full w-16 h-16 flex items-center justify-center mb-6">
-                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-3">Risk Assessment</h3>
-                        <p class="text-gray-400">Proactive identification and management of financial, operational, and safety risks.</p>
-                    </div>
-                    <!-- Service Card 4 -->
-                    <div class="bg-[#1e1e1e] p-8 rounded-xl shadow-lg hover:shadow-blue-500/20 transform hover:-translate-y-2 transition-all duration-300 reveal">
-                         <div class="bg-blue-600/10 text-blue-400 rounded-full w-16 h-16 flex items-center justify-center mb-6">
-                            <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" /></svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-3">Regulatory Compliance</h3>
-                        <p class="text-gray-400">Navigating complex zoning laws, building codes, and permits to ensure your project is fully compliant.</p>
-                    </div>
-                    <!-- Service Card 5 -->
-                    <div class="bg-[#1e1e1e] p-8 rounded-xl shadow-lg hover:shadow-blue-500/20 transform hover:-translate-y-2 transition-all duration-300 reveal" style="transition-delay: 100ms;">
-                         <div class="bg-blue-600/10 text-blue-400 rounded-full w-16 h-16 flex items-center justify-center mb-6">
-                           <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" /></svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-3">Cost Optimization</h3>
-                        <p class="text-gray-400">Strategic planning and analysis to maximize value and minimize unnecessary expenditures.</p>
-                    </div>
-                    <!-- Service Card 6 -->
-                    <div class="bg-[#1e1e1e] p-8 rounded-xl shadow-lg hover:shadow-blue-500/20 transform hover:-translate-y-2 transition-all duration-300 reveal" style="transition-delay: 200ms;">
-                        <div class="bg-blue-600/10 text-blue-400 rounded-full w-16 h-16 flex items-center justify-center mb-6">
-                            <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" /></svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-3">Sustainability Consulting</h3>
-                        <p class="text-gray-400">Integrating green building practices and materials to create eco-friendly, efficient structures.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Contact Section -->
-        <section id="contact" class="py-20 md:py-32 bg-[#181818]">
+        <section id="contact" class="py-20 md:py-32 bg-black">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 reveal">Get in Touch</h2>
-                    <p class="text-lg text-gray-400 max-w-2xl mx-auto reveal">Have a project in mind? We'd love to hear from you. Let's build something great together.</p>
+                    <p class="text-lg text-gray-300 max-w-2xl mx-auto reveal">Have a project in mind? I'd love to hear from you. Let's build something great together.</p>
                 </div>
-                <div class="max-w-lg mx-auto flex justify-center">
+                <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+                    <!-- Headshot & Message -->
+                    <div class="text-center reveal" style="transition-delay: 200ms;">
+                        <img src="https://605designs.com/demos/bluecrane-pro/chadheadshot02.png" alt="Headshot of the consultant" class="w-48 h-48 rounded-full mx-auto mb-6 object-cover border-4 border-[#0091C6]/50">
+                        <p class="text-lg text-gray-300 italic">"I am personally invested in the success of every project. I look forward to understanding your vision and collaborating to achieve exceptional results."</p>
+                    </div>
+
                     <!-- Contact Details -->
-                    <div class="space-y-8 text-gray-300 reveal" style="transition-delay: 200ms;">
+                    <div class="space-y-8 text-gray-300 reveal" style="transition-delay: 400ms;">
                         <div class="flex items-start space-x-4">
-                            <div class="bg-blue-600/10 text-blue-400 rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            <div class="bg-[#0091C6]/10 text-[#0091C6] rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 002-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                             </div>
                             <div>
                                 <h3 class="text-lg font-semibold text-white">Email</h3>
-                                <a href="mailto:blue-crane@hotmail.com" class="hover:text-blue-400 transition-colors">blue-crane@hotmail.com</a>
+                                <a href="mailto:chad@bluecrane.pro" class="hover:text-[#00a9e3] transition-colors">CHAD@BLUECRANE.PRO</a>
                             </div>
                         </div>
                         <div class="flex items-start space-x-4">
-                            <div class="bg-blue-600/10 text-blue-400 rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0">
+                            <div class="bg-[#0091C6]/10 text-[#0091C6] rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
                             </div>
                             <div>
                                 <h3 class="text-lg font-semibold text-white">Phone</h3>
-                                <a href="tel:6059561050" class="hover:text-blue-400 transition-colors">605 956 1050</a>
+                                <a href="tel:6059561050" class="hover:text-[#00a9e3] transition-colors">(605) 956-1050</a>
                             </div>
                         </div>
                     </div>
@@ -203,16 +184,132 @@
 
     <!-- Footer -->
     <footer class="bg-black py-8">
-        <div class="container mx-auto px-6 text-center text-gray-500">
+        <div class="container mx-auto px-6 text-center text-gray-400">
             <div class="flex justify-center space-x-6 mb-4">
-                <a href="#about" class="hover:text-blue-400 transition-colors">About</a>
-                <a href="#services" class="hover:text-blue-400 transition-colors">Services</a>
-                <a href="#contact" class="hover:text-blue-400 transition-colors">Contact</a>
-                <a href="#" class="hover:text-blue-400 transition-colors">Privacy Policy</a>
+                <a href="#offerings" class="hover:text-[#00a9e3] transition-colors">Offerings</a>
+                <a href="#about" class="hover:text-[#00a9e3] transition-colors">About</a>
+                <a href="#contact" class="hover:text-[#00a9e3] transition-colors">Contact</a>
+                <button id="open-privacy-modal" class="hover:text-[#00a9e3] transition-colors">Privacy Policy</button>
             </div>
-            <p>&copy; <span id="current-year"></span> Blue Crane Consulting and Services. All Rights Reserved.</p>
+            <p>&copy; <span id="current-year"></span> Blue Crane. All Rights Reserved.</p>
+            <p class="text-sm mt-2">Website created by <a href="https://605designs.com" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">605designs.com</a></p>
         </div>
     </footer>
+    
+    <!-- Consulting Modal -->
+    <div id="consulting-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black/70 invisible opacity-0">
+        <div class="modal-content bg-[#1e1e1e] rounded-lg shadow-xl w-11/12 max-w-4xl p-8 transform scale-95">
+            <div class="flex justify-between items-center border-b border-gray-700 pb-4 mb-6">
+                <h2 class="text-2xl font-bold text-white">Consulting Offerings</h2>
+                <button class="close-modal text-gray-400 hover:text-white text-3xl leading-none">&times;</button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 max-h-[60vh] overflow-y-auto pr-4">
+                <div>
+                    <h3 class="text-xl font-bold text-[#00a9e3] mb-3">Project & Management</h3>
+                    <ul class="space-y-2 text-gray-300 list-disc list-inside">
+                        <li>Owner's Representation</li>
+                        <li>Project Management</li>
+                        <li>Contract & Proposal Reviews</li>
+                        <li>Takeoffs/Estimating</li>
+                        <li>Progress Inspections</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-[#00a9e3] mb-3">Design, Engineering & QA</h3>
+                     <ul class="space-y-2 text-gray-300 list-disc list-inside">
+                        <li>Design Reviews</li>
+                        <li>Sustainability Assessments</li>
+                        <li>Quality Assurance Inspections</li>
+                        <li>Development Planning</li>
+                    </ul>
+                </div>
+                 <div>
+                    <h3 class="text-xl font-bold text-[#00a9e3] mb-3">Claims, Disputes & Legal</h3>
+                    <ul class="space-y-2 text-gray-300 list-disc list-inside">
+                        <li>Dispute Resolution</li>
+                        <li>Claims Management</li>
+                        <li>Expert Witness</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-[#00a9e3] mb-3">Forensic & Investigation</h3>
+                    <ul class="space-y-2 text-gray-300 list-disc list-inside">
+                        <li>Forensic Analysis</li>
+                        <li>Defect & Accident Investigations</li>
+                        <li>Property Condition Assessments</li>
+                        <li>Building Envelope Surveys</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 text-right">
+                <button class="interested-btn bg-[#0091C6] hover:bg-[#007aa8] text-white font-semibold px-6 py-2 rounded-lg transition-transform duration-300 hover:scale-105">I'm Interested</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Services Modal -->
+    <div id="services-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black/70 invisible opacity-0">
+        <div class="modal-content bg-[#1e1e1e] rounded-lg shadow-xl w-11/12 max-w-4xl p-8 transform scale-95">
+            <div class="flex justify-between items-center border-b border-gray-700 pb-4 mb-6">
+                <h2 class="text-2xl font-bold text-white">Hands-On Services</h2>
+                 <button class="close-modal text-gray-400 hover:text-white text-3xl leading-none">&times;</button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6 max-h-[60vh] overflow-y-auto pr-4">
+                <div>
+                    <h3 class="text-xl font-bold text-[#00a9e3] mb-3">Building Services</h3>
+                    <ul class="space-y-2 text-gray-300 list-disc list-inside">
+                         <li>Handyman</li>
+                         <li>Scheduled Maintenance</li>
+                         <li>Remodels</li>
+                         <li>Small Scope New Projects</li>
+                         <li>Large Project Scope Gap Coverage</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-[#00a9e3] mb-3">Courier Services</h3>
+                     <ul class="space-y-2 text-gray-300 list-disc list-inside">
+                        <li>Medical & Pharmaceutical</li>
+                        <li>Legal & Confidential Documents</li>
+                        <li>Bid Delivery</li>
+                    </ul>
+                </div>
+                 <div>
+                    <h3 class="text-xl font-bold text-[#00a9e3] mb-3">Personal Services</h3>
+                    <ul class="space-y-2 text-gray-300 list-disc list-inside">
+                        <li>Shopping & Errands</li>
+                        <li>Transportation</li>
+                        <li>In-Home Pet Care</li>
+                    </ul>
+                </div>
+            </div>
+             <div class="mt-8 text-right">
+                <button class="interested-btn bg-[#0091C6] hover:bg-[#007aa8] text-white font-semibold px-6 py-2 rounded-lg transition-transform duration-300 hover:scale-105">I'm Interested</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacy-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black/70 invisible opacity-0">
+        <div class="modal-content bg-[#1e1e1e] rounded-lg shadow-xl w-11/12 max-w-4xl p-8 transform scale-95">
+            <div class="flex justify-between items-center border-b border-gray-700 pb-4 mb-6">
+                <h2 class="text-2xl font-bold text-white">Privacy Policy</h2>
+                <button class="close-modal text-gray-400 hover:text-white text-3xl leading-none">&times;</button>
+            </div>
+            <div class="space-y-4 text-gray-300 max-h-[60vh] overflow-y-auto pr-4">
+                <p>Your privacy is important to us. It is Blue Crane's policy to respect your privacy regarding any information we may collect from you across our website.</p>
+                <p>We only ask for personal information when we truly need it to provide a service to you. We collect it by fair and lawful means, with your knowledge and consent. We also let you know why we’re collecting it and how it will be used.</p>
+                <p>Any information you provide via our contact details (email, phone) will be used solely for the purpose of communicating with you about your inquiry or project. We do not share any personally identifying information publicly or with third-parties, except when required to by law.</p>
+                <p>Our website may link to external sites that are not operated by us. Please be aware that we have no control over the content and practices of these sites, and cannot accept responsibility or liability for their respective privacy policies.</p>
+                <p>You are free to refuse our request for your personal information, with the understanding that we may be unable to provide you with some of your desired services.</p>
+                <p>Your continued use of our website will be regarded as acceptance of our practices around privacy and personal information. If you have any questions about how we handle user data and personal information, feel free to contact us.</p>
+                <p>This policy is effective as of 1 January 2024.</p>
+            </div>
+            <div class="mt-8 text-right">
+                <button class="close-modal bg-gray-600 hover:bg-gray-500 text-white font-semibold px-6 py-2 rounded-lg transition-transform duration-300 hover:scale-105">Close</button>
+            </div>
+        </div>
+    </div>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -224,12 +321,14 @@
             });
 
             // Close mobile menu when a link is clicked
-            document.querySelectorAll('#mobile-menu a').forEach(link => {
+            document.querySelectorAll('#mobile-menu a, nav a').forEach(link => {
                 link.addEventListener('click', () => {
-                    mobileMenu.classList.add('hidden');
+                    if(link.getAttribute('href') && link.getAttribute('href').startsWith('#')) {
+                        mobileMenu.classList.add('hidden');
+                    }
                 });
             });
-
+            
             // Header shadow on scroll
             const header = document.getElementById('header');
             window.addEventListener('scroll', () => {
@@ -242,7 +341,7 @@
 
             // Set current year in footer
             document.getElementById('current-year').textContent = new Date().getFullYear();
-
+            
             // Scroll reveal animation
             const revealElements = document.querySelectorAll('.reveal');
             const observer = new IntersectionObserver((entries) => {
@@ -255,12 +354,84 @@
             }, {
                 threshold: 0.1
             });
-
+            
             revealElements.forEach(el => {
                 observer.observe(el);
+            });
+
+            // Modal Logic
+            const consultingModal = document.getElementById('consulting-modal');
+            const servicesModal = document.getElementById('services-modal');
+            const privacyModal = document.getElementById('privacy-modal');
+
+            const openConsultingBtn = document.getElementById('open-consulting-modal');
+            const openServicesBtn = document.getElementById('open-services-modal');
+            const openPrivacyBtn = document.getElementById('open-privacy-modal');
+
+            const closeButtons = document.querySelectorAll('.close-modal');
+            const interestedButtons = document.querySelectorAll('.interested-btn');
+
+            const allModals = [consultingModal, servicesModal, privacyModal];
+
+            const openModal = (modal) => {
+                if (!modal) return;
+                modal.classList.remove('invisible', 'opacity-0');
+                modal.querySelector('.modal-content').classList.remove('scale-95');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            };
+
+            const closeModal = (modal) => {
+                if (!modal) return;
+                modal.classList.add('opacity-0');
+                modal.querySelector('.modal-content').classList.add('scale-95');
+                setTimeout(() => {
+                    modal.classList.add('invisible');
+                    // Only restore scrolling if no other modals are open
+                    if (!document.querySelector('.modal:not(.invisible)')) {
+                        document.body.style.overflow = '';
+                    }
+                }, 300);
+            };
+            
+            const closeAllModals = () => allModals.forEach(closeModal);
+
+            openConsultingBtn.addEventListener('click', () => openModal(consultingModal));
+            openServicesBtn.addEventListener('click', () => openModal(servicesModal));
+            openPrivacyBtn.addEventListener('click', () => openModal(privacyModal));
+
+            closeButtons.forEach(btn => {
+                btn.addEventListener('click', () => closeAllModals());
+            });
+            
+            // Close modal when clicking on the backdrop
+            allModals.forEach(modal => {
+                 modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        closeModal(modal);
+                    }
+                });
+            });
+            
+            // Handle "I'm Interested" button click
+            interestedButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    closeAllModals();
+                    // Smooth scroll to contact section
+                    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeAllModals();
+                }
             });
         });
     </script>
 
 </body>
 </html>
+
+
+
