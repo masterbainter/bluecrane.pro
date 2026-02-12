@@ -3,14 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blue Crane | Consulting & Construction Services</title>
+    <title>Blue Crane | Construction Consulting & Service</title>
     <meta name="description" content="Blue Crane offers expert construction-based project consulting and hands-on building services for efficient, sustainable outcomes.">
-    
+
+    <!-- Open Graph / Facebook -->
+    <meta property="fb:app_id" content="1240946774807685">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bluecrane.pro/">
+    <meta property="og:title" content="Blue Crane | Construction Consulting & Service">
+    <meta property="og:description" content="High-level project consulting and hands-on building services for efficient, sustainable outcomes.">
+    <meta property="og:image" content="https://images.bluecrane.pro/og-preview.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blue Crane | Construction Consulting & Service">
+    <meta name="twitter:description" content="High-level project consulting and hands-on building services for efficient, sustainable outcomes.">
+    <meta name="twitter:image" content="https://images.bluecrane.pro/og-preview.jpg">
+
     <!-- Favicon Links -->
-    <link rel="apple-touch-icon" sizes="180x180" href="https://605designs.com/demos/bluecrane-pro/favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://605designs.com/demos/bluecrane-pro/favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://605designs.com/demos/bluecrane-pro/favicon_io/favicon-16x16.png">
-    <link rel="icon" href="https://605designs.com/demos/bluecrane-pro/favicon_io/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://images.bluecrane.pro/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://images.bluecrane.pro/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://images.bluecrane.pro/favicon-16x16.png">
+    <link rel="icon" href="https://images.bluecrane.pro/favicon.ico">
+
+    <!-- Cloudflare Turnstile -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -25,19 +44,21 @@
         /* Custom base styles */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #121212; /* Near Black Base */
+            background-color: #121212;
             color: #E0E0E0;
         }
 
+        /* Main/Offerings section background */
         .main-section {
-            background-image: linear-gradient(rgba(18, 18, 18, 0.7), rgba(18, 18, 18, 0.7)), url('https://605designs.com/demos/bluecrane-pro/chadproject/commons01.jpg');
+            background-image: linear-gradient(rgba(18, 18, 18, 0.7), rgba(18, 18, 18, 0.7)), url('https://images.bluecrane.pro/commons01.webp');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
         }
 
+        /* About section background */
         .about-section {
-            background-image: linear-gradient(rgba(24, 24, 24, 0.85), rgba(24, 24, 24, 0.85)), url('https://605designs.com/demos/bluecrane-pro/chadproject/arial01cut.png');
+            background-image: linear-gradient(rgba(24, 24, 24, 0.85), rgba(24, 24, 24, 0.85)), url('https://images.bluecrane.pro/arial01cut.webp');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -54,20 +75,63 @@
             opacity: 1;
             transform: translateY(0);
         }
+        
+        .service-view {
+            transition: opacity 0.4s ease-in-out;
+        }
 
         /* Custom focus styles for accessibility */
         :focus-visible {
-            outline: 2px solid #00a9e3; 
+            outline: 2px solid #0091C6; /* A light blue outline matching logo */
             outline-offset: 2px;
             border-radius: 4px;
         }
-        
-        /* Modal Styles */
-        .modal {
-            transition: opacity 0.3s ease, visibility 0.3s ease;
+
+        /* Accordion styles */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            /* Smoother, slightly 'bouncier' transition */
+            transition: max-height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), padding 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            padding-top: 0;
+            padding-bottom: 0;
         }
-        .modal-content {
-            transition: transform 0.3s ease;
+
+        .accordion-card {
+            /* Prepare for border transition */
+            border: 1px solid transparent;
+            /* Transition all properties for a smooth effect */
+            transition: all 0.4s ease-in-out;
+        }
+        
+        /* New active state styling for better mobile feedback */
+        .accordion-card.active {
+            border-color: #0091C6; /* blue from logo */
+            background-color: #2a2a2a; /* Slightly lighter than card bg */
+        }
+
+        .accordion-card.active .accordion-content,
+        .accordion-card:not(.active):hover .accordion-content {
+            max-height: 500px; /* Adjust as needed */
+            padding-top: 1.5rem; /* Corresponds to pt-6 */
+            padding-bottom: 0.5rem; /* Corresponds to pb-2 */
+        }
+        
+        .accordion-card.active .accordion-arrow {
+             transform: rotate(180deg);
+        }
+
+        /* Prevent sticky hover effects on touch devices for a cleaner mobile experience */
+        @media (hover: none) {
+            .accordion-card:hover .accordion-content {
+                max-height: 0;
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+            .accordion-card:hover {
+                box-shadow: none; /* remove hover shadow on touch */
+                transform: none; /* remove any hover transforms */
+            }
         }
     </style>
 </head>
@@ -76,14 +140,15 @@
     <!-- Header -->
     <header id="header" class="bg-[#1a1a1a]/80 backdrop-blur-lg sticky top-0 z-50 transition-all duration-300">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#offerings" class="flex items-center">
-                <img src="https://605designs.com/demos/bluecrane-pro/BCLOGOWhiteLetters.png" alt="Blue Crane Logo" class="h-12">
+            <a href="#home" class="flex items-center">
+                <img src="https://images.bluecrane.pro/bc-logo-white.webp" alt="Blue Crane Logo" class="h-12">
             </a>
             <!-- Desktop Menu -->
             <div class="hidden md:flex items-center space-x-8">
-                <a href="#offerings" class="text-gray-300 hover:text-[#00a9e3] transition-colors duration-300">Offerings</a>
+                <a href="#home" class="text-gray-300 hover:text-[#00a9e3] transition-colors duration-300">Home</a>
                 <a href="#about" class="text-gray-300 hover:text-[#00a9e3] transition-colors duration-300">About</a>
-                <a href="#contact" class="bg-[#0091C6] hover:bg-[#007aa8] text-white font-semibold px-5 py-2 rounded-lg transition-transform duration-300 hover:scale-105">Get in Touch</a>
+                <a href="#services" class="text-gray-300 hover:text-[#00a9e3] transition-colors duration-300">Offerings</a>
+                <a href="#contact" class="bg-[#0091C6] hover:bg-[#007aa8] text-white font-semibold px-5 py-2 rounded-lg transition-transform duration-300 hover:scale-105">Contact Me</a>
             </div>
             <!-- Mobile Menu Button -->
             <button id="mobile-menu-button" class="md:hidden text-gray-300 focus:outline-none">
@@ -94,40 +159,20 @@
         </nav>
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2">
-            <a href="#offerings" class="block text-gray-300 hover:text-[#00a9e3] transition-colors duration-300 py-2">Offerings</a>
+            <a href="#home" class="block text-gray-300 hover:text-[#00a9e3] transition-colors duration-300 py-2">Home</a>
             <a href="#about" class="block text-gray-300 hover:text-[#00a9e3] transition-colors duration-300 py-2">About</a>
-            <a href="#contact" class="block bg-[#0091C6] hover:bg-[#007aa8] text-white font-semibold px-5 py-2 rounded-lg transition-transform duration-300 hover:scale-105 mt-2 text-center">Get in Touch</a>
+            <a href="#services" class="block text-gray-300 hover:text-[#00a9e3] transition-colors duration-300 py-2">Offerings</a>
+            <a href="#contact" class="block bg-[#0091C6] hover:bg-[#007aa8] text-white font-semibold px-5 py-2 rounded-lg transition-transform duration-300 hover:scale-105 mt-2 text-center">Contact Me</a>
         </div>
     </header>
 
     <main>
-        <!-- Offerings Section (New Hero) -->
-        <section id="offerings" class="main-section py-20 md:py-32">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-4 reveal">Blue Crane</h1>
-                    <p class="text-lg md:text-2xl text-gray-300 max-w-3xl mx-auto reveal" style="transition-delay: 200ms;">High-Level Project Consulting and Hands-On Building Services for Efficient, Sustainable Outcomes.</p>
-                </div>
-
-                <!-- Offering Buttons -->
-                <div class="flex flex-col md:flex-row justify-center items-center gap-6 mt-12 reveal" style="transition-delay: 400ms;">
-                    <button id="open-consulting-modal" class="bg-[#0091C6] hover:bg-[#007aa8] text-white font-bold py-4 px-8 rounded-lg transition-transform duration-300 hover:scale-105 w-full md:w-auto">
-                        Explore Consulting
-                    </button>
-                    <button id="open-services-modal" class="bg-[#0091C6] hover:bg-[#007aa8] text-white font-bold py-4 px-8 rounded-lg transition-transform duration-300 hover:scale-105 w-full md:w-auto">
-                        Explore Services
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Visual Break / Mission Statement -->
-        <section class="bg-black py-20 md:py-24">
-            <div class="container mx-auto px-6 text-center max-w-4xl">
-                <p class="text-2xl md:text-3xl font-light text-gray-300 italic leading-relaxed reveal">
-                    "Where expertise meets execution—transforming your vision into a tangible asset with precision and integrity."
-                </p>
-                <div class="w-24 h-1 bg-[#0091C6] mx-auto mt-8 reveal" style="transition-delay: 200ms;"></div>
+        <!-- Hero/Offerings Section -->
+        <section id="home" class="main-section py-20 md:py-32 text-center">
+            <div class="max-w-4xl mx-auto px-6">
+                <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-4 reveal">Blue Crane</h1>
+                <p class="text-lg md:text-2xl text-gray-300 reveal" style="transition-delay: 200ms;">High-Level Project Consulting and Hands-On Building Services for Efficient, Sustainable Outcomes.</p>
+                <a href="#services" class="mt-8 inline-block bg-[#0091C6] hover:bg-[#007aa8] text-white font-semibold px-8 py-3 rounded-lg transition-transform duration-300 hover:scale-105 reveal" style="transition-delay: 400ms;">Explore My Offerings</a>
             </div>
         </section>
 
@@ -136,35 +181,176 @@
             <div class="container mx-auto px-6 max-w-4xl text-center">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 reveal">My Approach to Construction Solutions</h2>
                 <div class="w-24 h-1 bg-[#0091C6] mx-auto mb-8 reveal"></div>
-                <p class="text-lg text-gray-300 leading-relaxed reveal">
-                    I specialize in two distinct streams of expertise. I provide tailored, high-level **consulting** for large-scale construction projects and offer skilled, hands-on **services** for building, repair, and finishing tasks. I partner directly with my clients to transform both complex challenges and practical needs into high-value assets.
+                <p class="text-lg text-gray-400 leading-relaxed reveal">
+                    I specialize in two distinct streams of expertise. I provide tailored, high-level consulting for large-scale construction projects and offer skilled, hands-on services for building, repair, and finishing tasks. I partner directly with my clients to transform both complex challenges and practical needs into high-value assets.
                 </p>
+                <div class="mt-12 reveal">
+                    <h3 class="text-xl font-semibold text-white mb-4">25+ Year Industry Background</h3>
+                    <ul class="text-gray-400 space-y-2 text-lg">
+                        <li>Professional Master of Architecture Degree</li>
+                        <li>Construction Management Instructor (South Dakota State University)</li>
+                        <li>Project Architect (South Dakota Office of the State Engineer)</li>
+                        <li>Private Sector Project Manager</li>
+                        <li>Private Sector Estimator</li>
+                        <li>Construction Company Owner</li>
+                        <li>Laborer/Installer</li>
+                        <li>Freelance Consultant</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20 md:py-32">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 reveal">My Offerings</h2>
+                    <p class="text-lg text-gray-400 max-w-2xl mx-auto reveal">Select a category to explore how I can help your project succeed.</p>
+                </div>
+                <!-- Toggle Buttons -->
+                <div class="flex justify-center mb-12 reveal">
+                    <div class="bg-[#1e1e1e] p-1.5 rounded-lg flex space-x-2">
+                        <button id="consulting-toggle" class="px-6 py-2 text-sm font-semibold text-white bg-[#0091C6] rounded-md transition-colors">Consulting</button>
+                        <button id="services-toggle" class="px-6 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700/50 rounded-md transition-colors">Service</button>
+                    </div>
+                </div>
+
+                <!-- Consulting View -->
+                <div id="consulting-view" class="service-view">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                        <div class="accordion-card bg-[#1e1e1e] p-6 rounded-xl shadow-lg hover:shadow-[#0091C6]/20 transition-all duration-300 cursor-pointer reveal">
+                            <div class="flex justify-between items-center">
+                                <h3 class="text-xl font-bold text-[#0091C6]">Project Management Services</h3>
+                                <svg class="accordion-arrow w-6 h-6 text-gray-400 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                            </div>
+                            <div class="accordion-content">
+                                <ul class="space-y-3 text-gray-400 list-disc list-inside">
+                                    <li>Owner's Representation</li>
+                                    <li>Project Management</li>
+                                    <li>Contract & Proposal Reviews</li>
+                                    <li>Takeoffs/Estimating</li>
+                                    <li>Progress Inspections</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="accordion-card bg-[#1e1e1e] p-6 rounded-xl shadow-lg hover:shadow-[#0091C6]/20 transition-all duration-300 cursor-pointer reveal">
+                            <div class="flex justify-between items-center">
+                                <h3 class="text-xl font-bold text-[#0091C6]">Design, Engineering & QA</h3>
+                                <svg class="accordion-arrow w-6 h-6 text-gray-400 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                            </div>
+                            <div class="accordion-content">
+                                <ul class="space-y-3 text-gray-400 list-disc list-inside">
+                                    <li>Design Reviews</li>
+                                    <li>Design Development</li>
+                                    <li>Sustainability Assessments</li>
+                                    <li>Quality Assurance Inspections</li>
+                                    <li>Development Planning</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="accordion-card bg-[#1e1e1e] p-6 rounded-xl shadow-lg hover:shadow-[#0091C6]/20 transition-all duration-300 cursor-pointer reveal">
+                            <div class="flex justify-between items-center">
+                                <h3 class="text-xl font-bold text-[#0091C6]">Claims, Disputes & Legal</h3>
+                                <svg class="accordion-arrow w-6 h-6 text-gray-400 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                            </div>
+                            <div class="accordion-content">
+                                <ul class="space-y-3 text-gray-400 list-disc list-inside">
+                                    <li>Dispute Resolution</li>
+                                    <li>Claims Management</li>
+                                    <li>Expert Witness</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="accordion-card bg-[#1e1e1e] p-6 rounded-xl shadow-lg hover:shadow-[#0091C6]/20 transition-all duration-300 cursor-pointer reveal">
+                            <div class="flex justify-between items-center">
+                                <h3 class="text-xl font-bold text-[#0091C6]">Forensic & Investigation</h3>
+                                <svg class="accordion-arrow w-6 h-6 text-gray-400 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                            </div>
+                            <div class="accordion-content">
+                                <ul class="space-y-3 text-gray-400 list-disc list-inside">
+                                    <li>Forensic Analysis</li>
+                                    <li>Defect & Accident Investigations</li>
+                                    <li>Property Condition Assessments</li>
+                                    <li>Building Envelope Surveys</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Services View -->
+                <div id="services-view" class="service-view hidden">
+                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                        <div class="accordion-card bg-[#1e1e1e] p-6 rounded-xl shadow-lg hover:shadow-[#0091C6]/20 transition-all duration-300 cursor-pointer reveal">
+                            <div class="flex justify-between items-center">
+                                <h3 class="text-xl font-bold text-[#0091C6]">Building Services</h3>
+                                <svg class="accordion-arrow w-6 h-6 text-gray-400 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                            </div>
+                            <div class="accordion-content">
+                                <ul class="space-y-3 text-gray-400 list-disc list-inside">
+                                    <li>Small Builder | Handyman</li>
+                                    <li>Remodeling | Maintenance</li>
+                                    <li>Kitchens | Bathrooms</li>
+                                    <li>Basement Finishing</li>
+                                    <li>Tile | Flooring</li>
+                                    <li>Scope Gap Coverage</li>
+                                </ul>
+                            </div>
+                        </div>
+                         <div class="accordion-card bg-[#1e1e1e] p-6 rounded-xl shadow-lg hover:shadow-[#0091C6]/20 transition-all duration-300 cursor-pointer reveal">
+                            <div class="flex justify-between items-center">
+                                <h3 class="text-xl font-bold text-[#0091C6]">Courier Services</h3>
+                                <svg class="accordion-arrow w-6 h-6 text-gray-400 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                            </div>
+                            <div class="accordion-content">
+                                <ul class="space-y-3 text-gray-400 list-disc list-inside">
+                                    <li>Medical & Pharmaceutical</li>
+                                    <li>Legal & Confidential Documents</li>
+                                    <li>Construction Bid Delivery</li>
+                                </ul>
+                            </div>
+                        </div>
+                         <div class="accordion-card bg-[#1e1e1e] p-6 rounded-xl shadow-lg hover:shadow-[#0091C6]/20 transition-all duration-300 cursor-pointer reveal">
+                            <div class="flex justify-between items-center">
+                                <h3 class="text-xl font-bold text-[#0091C6]">Personal Services</h3>
+                                <svg class="accordion-arrow w-6 h-6 text-gray-400 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                            </div>
+                             <div class="accordion-content">
+                                <ul class="space-y-3 text-gray-400 list-disc list-inside">
+                                    <li>Shopping & Errands</li>
+                                    <li>Transportation</li>
+                                    <li>Other: Inquire</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="py-20 md:py-32 bg-black">
+        <section id="contact" class="py-20 md:py-32 bg-[#181818]">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 reveal">Get in Touch</h2>
-                    <p class="text-lg text-gray-300 max-w-2xl mx-auto reveal">Have a project in mind? I'd love to hear from you. Let's build something great together.</p>
+                    <p class="text-lg text-gray-400 max-w-2xl mx-auto reveal">Have a project in mind? I'd love to hear from you. Let's build something great together.</p>
                 </div>
-                <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+                <!-- Contact Info with Headshot -->
+                <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center mb-16">
                     <!-- Headshot & Message -->
                     <div class="text-center reveal" style="transition-delay: 200ms;">
-                        <img src="https://605designs.com/demos/bluecrane-pro/chadheadshot02.png" alt="Headshot of the consultant" class="w-48 h-48 rounded-full mx-auto mb-6 object-cover border-4 border-[#0091C6]/50">
+                        <img src="https://images.bluecrane.pro/chadheadshot.webp" alt="Headshot of the consultant" class="w-48 h-48 rounded-full mx-auto mb-6 object-cover border-4 border-[#0091C6]/50">
                         <p class="text-lg text-gray-300 italic">"I am personally invested in the success of every project. I look forward to understanding your vision and collaborating to achieve exceptional results."</p>
                     </div>
-
                     <!-- Contact Details -->
                     <div class="space-y-8 text-gray-300 reveal" style="transition-delay: 400ms;">
                         <div class="flex items-start space-x-4">
                             <div class="bg-[#0091C6]/10 text-[#0091C6] rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 002-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                             </div>
                             <div>
                                 <h3 class="text-lg font-semibold text-white">Email</h3>
-                                <a href="mailto:chad@bluecrane.pro" class="hover:text-[#00a9e3] transition-colors">CHAD@BLUECRANE.PRO</a>
+                                <a href="mailto:CHAD@BLUECRANE.PRO" class="hover:text-[#00a9e3] transition-colors">CHAD@BLUECRANE.PRO</a>
                             </div>
                         </div>
                         <div class="flex items-start space-x-4">
@@ -173,143 +359,151 @@
                             </div>
                             <div>
                                 <h3 class="text-lg font-semibold text-white">Phone</h3>
-                                <a href="tel:6059562262" class="hover:text-[#00a9e3] transition-colors">(605) 956-2262‬</a>
+                                <a href="tel:6059562262" class="hover:text-[#00a9e3] transition-colors">(605) 956-2262</a>
                             </div>
                         </div>
                     </div>
+                </div><!-- end grid -->
+
+                <!-- Form Toggle -->
+                <div class="flex justify-center mb-10 reveal">
+                    <div class="bg-[#1e1e1e] p-1.5 rounded-lg flex space-x-2">
+                        <button id="consulting-form-toggle" class="px-6 py-2 text-sm font-semibold text-white bg-[#0091C6] rounded-md transition-colors">Consulting Inquiry</button>
+                        <button id="service-form-toggle" class="px-6 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700/50 rounded-md transition-colors">Service Inquiry</button>
+                    </div>
                 </div>
+
+                <!-- Consulting Form -->
+                <form id="consulting-form" class="max-w-2xl mx-auto space-y-6 reveal">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Name</label>
+                            <input type="text" name="name" class="w-full bg-[#1e1e1e] border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-[#0091C6] focus:ring-1 focus:ring-[#0091C6] outline-none transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
+                            <input type="email" name="email" class="w-full bg-[#1e1e1e] border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-[#0091C6] focus:ring-1 focus:ring-[#0091C6] outline-none transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Phone Number</label>
+                            <input type="tel" name="phone" class="w-full bg-[#1e1e1e] border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-[#0091C6] focus:ring-1 focus:ring-[#0091C6] outline-none transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Preferred Method of Contact</label>
+                            <select name="contact_method" class="w-full bg-[#1e1e1e] border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-[#0091C6] focus:ring-1 focus:ring-[#0091C6] outline-none transition-colors">
+                                <option value="">Select...</option>
+                                <option value="email">Email</option>
+                                <option value="phone">Phone</option>
+                                <option value="text">Text</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-3">What can we help you with? (Check all that apply)</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center space-x-3 text-gray-400 cursor-pointer"><input type="checkbox" name="help[]" value="project-management" class="w-4 h-4 rounded border-gray-600 text-[#0091C6] focus:ring-[#0091C6] bg-[#1e1e1e]"><span>Project and Management Services</span></label>
+                            <label class="flex items-center space-x-3 text-gray-400 cursor-pointer"><input type="checkbox" name="help[]" value="design-engineering" class="w-4 h-4 rounded border-gray-600 text-[#0091C6] focus:ring-[#0091C6] bg-[#1e1e1e]"><span>Design, Engineering, and Quality Assurance</span></label>
+                            <label class="flex items-center space-x-3 text-gray-400 cursor-pointer"><input type="checkbox" name="help[]" value="claims-disputes" class="w-4 h-4 rounded border-gray-600 text-[#0091C6] focus:ring-[#0091C6] bg-[#1e1e1e]"><span>Claims, Disputes, and Legal Support</span></label>
+                            <label class="flex items-center space-x-3 text-gray-400 cursor-pointer"><input type="checkbox" name="help[]" value="forensic" class="w-4 h-4 rounded border-gray-600 text-[#0091C6] focus:ring-[#0091C6] bg-[#1e1e1e]"><span>Forensic and Investigation Services</span></label>
+                            <label class="flex items-center space-x-3 text-gray-400 cursor-pointer"><input type="checkbox" name="help[]" value="other" class="w-4 h-4 rounded border-gray-600 text-[#0091C6] focus:ring-[#0091C6] bg-[#1e1e1e]"><span>Other</span></label>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-3">What stage is your project in?</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center space-x-3 text-gray-400 cursor-pointer"><input type="radio" name="stage" value="ideas" class="w-4 h-4 border-gray-600 text-[#0091C6] focus:ring-[#0091C6] bg-[#1e1e1e]"><span>Playing with ideas, ready to take it to the next level</span></label>
+                            <label class="flex items-center space-x-3 text-gray-400 cursor-pointer"><input type="radio" name="stage" value="design" class="w-4 h-4 border-gray-600 text-[#0091C6] focus:ring-[#0091C6] bg-[#1e1e1e]"><span>Design Phase</span></label>
+                            <label class="flex items-center space-x-3 text-gray-400 cursor-pointer"><input type="radio" name="stage" value="bidding" class="w-4 h-4 border-gray-600 text-[#0091C6] focus:ring-[#0091C6] bg-[#1e1e1e]"><span>Construction Documents Finalized, Ready for Bidding</span></label>
+                            <label class="flex items-center space-x-3 text-gray-400 cursor-pointer"><input type="radio" name="stage" value="build" class="w-4 h-4 border-gray-600 text-[#0091C6] focus:ring-[#0091C6] bg-[#1e1e1e]"><span>Bidding Completed, Ready to Build</span></label>
+                            <label class="flex items-center space-x-3 text-gray-400 cursor-pointer"><input type="radio" name="stage" value="construction" class="w-4 h-4 border-gray-600 text-[#0091C6] focus:ring-[#0091C6] bg-[#1e1e1e]"><span>Project Under Construction</span></label>
+                            <label class="flex items-center space-x-3 text-gray-400 cursor-pointer"><input type="radio" name="stage" value="post" class="w-4 h-4 border-gray-600 text-[#0091C6] focus:ring-[#0091C6] bg-[#1e1e1e]"><span>Post Construction/Existing Building</span></label>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Is the project fully funded?</label>
+                        <div class="flex space-x-6">
+                            <label class="flex items-center space-x-2 text-gray-400 cursor-pointer"><input type="radio" name="funded" value="yes" class="w-4 h-4 border-gray-600 text-[#0091C6] focus:ring-[#0091C6] bg-[#1e1e1e]"><span>Yes</span></label>
+                            <label class="flex items-center space-x-2 text-gray-400 cursor-pointer"><input type="radio" name="funded" value="no" class="w-4 h-4 border-gray-600 text-[#0091C6] focus:ring-[#0091C6] bg-[#1e1e1e]"><span>No</span></label>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Please tell us a little more about your project and anticipated needs</label>
+                        <textarea name="details" rows="4" class="w-full bg-[#1e1e1e] border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-[#0091C6] focus:ring-1 focus:ring-[#0091C6] outline-none transition-colors resize-vertical"></textarea>
+                    </div>
+                    <!-- Honeypot - hidden from real users -->
+                    <div style="position:absolute;left:-9999px;" aria-hidden="true">
+                        <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+                    </div>
+                    <!-- Turnstile invisible widget -->
+                    <div class="cf-turnstile" data-sitekey="0x4AAAAAACatbdgraPXrip60" data-theme="dark"></div>
+                    <div id="consulting-form-status" class="text-center text-sm hidden"></div>
+                    <button type="submit" class="w-full bg-[#0091C6] hover:bg-[#007aa8] text-white font-semibold py-3 rounded-lg transition-transform duration-300 hover:scale-[1.02]">Submit Consulting Inquiry</button>
+                </form>
+
+                <!-- Service Form -->
+                <form id="service-form" class="max-w-2xl mx-auto space-y-6 reveal hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Name</label>
+                            <input type="text" name="name" class="w-full bg-[#1e1e1e] border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-[#0091C6] focus:ring-1 focus:ring-[#0091C6] outline-none transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
+                            <input type="email" name="email" class="w-full bg-[#1e1e1e] border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-[#0091C6] focus:ring-1 focus:ring-[#0091C6] outline-none transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Phone Number</label>
+                            <input type="tel" name="phone" class="w-full bg-[#1e1e1e] border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-[#0091C6] focus:ring-1 focus:ring-[#0091C6] outline-none transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Preferred Method of Contact</label>
+                            <select name="contact_method" class="w-full bg-[#1e1e1e] border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-[#0091C6] focus:ring-1 focus:ring-[#0091C6] outline-none transition-colors">
+                                <option value="">Select...</option>
+                                <option value="email">Email</option>
+                                <option value="phone">Phone</option>
+                                <option value="text">Text</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-3">What can we help you with? (Check all that apply)</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center space-x-3 text-gray-400 cursor-pointer"><input type="checkbox" name="help[]" value="building" class="w-4 h-4 rounded border-gray-600 text-[#0091C6] focus:ring-[#0091C6] bg-[#1e1e1e]"><span>Building Services</span></label>
+                            <label class="flex items-center space-x-3 text-gray-400 cursor-pointer"><input type="checkbox" name="help[]" value="courier" class="w-4 h-4 rounded border-gray-600 text-[#0091C6] focus:ring-[#0091C6] bg-[#1e1e1e]"><span>Courier Services</span></label>
+                            <label class="flex items-center space-x-3 text-gray-400 cursor-pointer"><input type="checkbox" name="help[]" value="personal" class="w-4 h-4 rounded border-gray-600 text-[#0091C6] focus:ring-[#0091C6] bg-[#1e1e1e]"><span>Personal Services</span></label>
+                            <label class="flex items-center space-x-3 text-gray-400 cursor-pointer"><input type="checkbox" name="help[]" value="other" class="w-4 h-4 rounded border-gray-600 text-[#0091C6] focus:ring-[#0091C6] bg-[#1e1e1e]"><span>Other</span></label>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Please tell us a little more about how we can serve you</label>
+                        <textarea name="details" rows="4" class="w-full bg-[#1e1e1e] border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-[#0091C6] focus:ring-1 focus:ring-[#0091C6] outline-none transition-colors resize-vertical"></textarea>
+                    </div>
+                    <!-- Honeypot - hidden from real users -->
+                    <div style="position:absolute;left:-9999px;" aria-hidden="true">
+                        <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+                    </div>
+                    <!-- Turnstile invisible widget -->
+                    <div class="cf-turnstile" data-sitekey="0x4AAAAAACatbdgraPXrip60" data-theme="dark"></div>
+                    <div id="service-form-status" class="text-center text-sm hidden"></div>
+                    <button type="submit" class="w-full bg-[#0091C6] hover:bg-[#007aa8] text-white font-semibold py-3 rounded-lg transition-transform duration-300 hover:scale-[1.02]">Submit Service Inquiry</button>
+                </form>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
     <footer class="bg-black py-8">
-        <div class="container mx-auto px-6 text-center text-gray-400">
+        <div class="container mx-auto px-6 text-center text-gray-500">
             <div class="flex justify-center space-x-6 mb-4">
-                <a href="#offerings" class="hover:text-[#00a9e3] transition-colors">Offerings</a>
                 <a href="#about" class="hover:text-[#00a9e3] transition-colors">About</a>
+                <a href="#services" class="hover:text-[#00a9e3] transition-colors">Offerings</a>
                 <a href="#contact" class="hover:text-[#00a9e3] transition-colors">Contact</a>
-                <button id="open-privacy-modal" class="hover:text-[#00a9e3] transition-colors">Privacy Policy</button>
+                <a href="#" class="hover:text-[#00a9e3] transition-colors">Privacy Policy</a>
             </div>
             <p>&copy; <span id="current-year"></span> Blue Crane. All Rights Reserved.</p>
-            <p class="text-sm mt-2">Website created by <a href="https://605designs.com" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">605designs.com</a></p>
+            <p class="mt-2 text-gray-600 text-sm">Website by <a href="https://605designs.com" target="_blank" class="hover:text-[#00a9e3] transition-colors">605designs.com</a></p>
         </div>
     </footer>
-    
-    <!-- Consulting Modal -->
-    <div id="consulting-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black/70 invisible opacity-0">
-        <div class="modal-content bg-[#1e1e1e] rounded-lg shadow-xl w-11/12 max-w-4xl p-8 transform scale-95">
-            <div class="flex justify-between items-center border-b border-gray-700 pb-4 mb-6">
-                <h2 class="text-2xl font-bold text-white">Consulting Offerings</h2>
-                <button class="close-modal text-gray-400 hover:text-white text-3xl leading-none">&times;</button>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 max-h-[60vh] overflow-y-auto pr-4">
-                <div>
-                    <h3 class="text-xl font-bold text-[#00a9e3] mb-3">Project & Management</h3>
-                    <ul class="space-y-2 text-gray-300 list-disc list-inside">
-                        <li>Owner's Representation</li>
-                        <li>Project Management</li>
-                        <li>Contract & Proposal Reviews</li>
-                        <li>Takeoffs/Estimating</li>
-                        <li>Progress Inspections</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-xl font-bold text-[#00a9e3] mb-3">Design, Engineering & QA</h3>
-                     <ul class="space-y-2 text-gray-300 list-disc list-inside">
-                        <li>Design Reviews</li>
-                        <li>Sustainability Assessments</li>
-                        <li>Quality Assurance Inspections</li>
-                        <li>Development Planning</li>
-                    </ul>
-                </div>
-                 <div>
-                    <h3 class="text-xl font-bold text-[#00a9e3] mb-3">Claims, Disputes & Legal</h3>
-                    <ul class="space-y-2 text-gray-300 list-disc list-inside">
-                        <li>Dispute Resolution</li>
-                        <li>Claims Management</li>
-                        <li>Expert Witness</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-xl font-bold text-[#00a9e3] mb-3">Forensic & Investigation</h3>
-                    <ul class="space-y-2 text-gray-300 list-disc list-inside">
-                        <li>Forensic Analysis</li>
-                        <li>Defect & Accident Investigations</li>
-                        <li>Property Condition Assessments</li>
-                        <li>Building Envelope Surveys</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="mt-8 text-right">
-                <button class="interested-btn bg-[#0091C6] hover:bg-[#007aa8] text-white font-semibold px-6 py-2 rounded-lg transition-transform duration-300 hover:scale-105">I'm Interested</button>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Services Modal -->
-    <div id="services-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black/70 invisible opacity-0">
-        <div class="modal-content bg-[#1e1e1e] rounded-lg shadow-xl w-11/12 max-w-4xl p-8 transform scale-95">
-            <div class="flex justify-between items-center border-b border-gray-700 pb-4 mb-6">
-                <h2 class="text-2xl font-bold text-white">Hands-On Services</h2>
-                 <button class="close-modal text-gray-400 hover:text-white text-3xl leading-none">&times;</button>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6 max-h-[60vh] overflow-y-auto pr-4">
-                <div>
-                    <h3 class="text-xl font-bold text-[#00a9e3] mb-3">Building Services</h3>
-                    <ul class="space-y-2 text-gray-300 list-disc list-inside">
-                         <li>Handyman</li>
-                         <li>Scheduled Maintenance</li>
-                         <li>Remodels</li>
-                         <li>Small Scope New Projects</li>
-                         <li>Large Project Scope Gap Coverage</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-xl font-bold text-[#00a9e3] mb-3">Courier Services</h3>
-                     <ul class="space-y-2 text-gray-300 list-disc list-inside">
-                        <li>Medical & Pharmaceutical</li>
-                        <li>Legal & Confidential Documents</li>
-                        <li>Bid Delivery</li>
-                    </ul>
-                </div>
-                 <div>
-                    <h3 class="text-xl font-bold text-[#00a9e3] mb-3">Personal Services</h3>
-                    <ul class="space-y-2 text-gray-300 list-disc list-inside">
-                        <li>Shopping & Errands</li>
-                        <li>Transportation</li>
-                        <li>In-Home Pet Care</li>
-                    </ul>
-                </div>
-            </div>
-             <div class="mt-8 text-right">
-                <button class="interested-btn bg-[#0091C6] hover:bg-[#007aa8] text-white font-semibold px-6 py-2 rounded-lg transition-transform duration-300 hover:scale-105">I'm Interested</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Privacy Policy Modal -->
-    <div id="privacy-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black/70 invisible opacity-0">
-        <div class="modal-content bg-[#1e1e1e] rounded-lg shadow-xl w-11/12 max-w-4xl p-8 transform scale-95">
-            <div class="flex justify-between items-center border-b border-gray-700 pb-4 mb-6">
-                <h2 class="text-2xl font-bold text-white">Privacy Policy</h2>
-                <button class="close-modal text-gray-400 hover:text-white text-3xl leading-none">&times;</button>
-            </div>
-            <div class="space-y-4 text-gray-300 max-h-[60vh] overflow-y-auto pr-4">
-                <p>Your privacy is important to us. It is Blue Crane's policy to respect your privacy regarding any information we may collect from you across our website.</p>
-                <p>We only ask for personal information when we truly need it to provide a service to you. We collect it by fair and lawful means, with your knowledge and consent. We also let you know why we’re collecting it and how it will be used.</p>
-                <p>Any information you provide via our contact details (email, phone) will be used solely for the purpose of communicating with you about your inquiry or project. We do not share any personally identifying information publicly or with third-parties, except when required to by law.</p>
-                <p>Our website may link to external sites that are not operated by us. Please be aware that we have no control over the content and practices of these sites, and cannot accept responsibility or liability for their respective privacy policies.</p>
-                <p>You are free to refuse our request for your personal information, with the understanding that we may be unable to provide you with some of your desired services.</p>
-                <p>Your continued use of our website will be regarded as acceptance of our practices around privacy and personal information. If you have any questions about how we handle user data and personal information, feel free to contact us.</p>
-                <p>This policy is effective as of 1 January 2024.</p>
-            </div>
-            <div class="mt-8 text-right">
-                <button class="close-modal bg-gray-600 hover:bg-gray-500 text-white font-semibold px-6 py-2 rounded-lg transition-transform duration-300 hover:scale-105">Close</button>
-            </div>
-        </div>
-    </div>
-
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -321,9 +515,9 @@
             });
 
             // Close mobile menu when a link is clicked
-            document.querySelectorAll('#mobile-menu a, nav a').forEach(link => {
-                link.addEventListener('click', () => {
-                    if(link.getAttribute('href') && link.getAttribute('href').startsWith('#')) {
+            document.querySelectorAll('#mobile-menu a, .desktop-menu a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    if(link.getAttribute('href').startsWith('#')) {
                         mobileMenu.classList.add('hidden');
                     }
                 });
@@ -359,79 +553,154 @@
                 observer.observe(el);
             });
 
-            // Modal Logic
-            const consultingModal = document.getElementById('consulting-modal');
-            const servicesModal = document.getElementById('services-modal');
-            const privacyModal = document.getElementById('privacy-modal');
+            // Accordion Logic
+            const accordionCards = document.querySelectorAll('.accordion-card');
+            accordionCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    // Check if the clicked card is already active
+                    const wasActive = card.classList.contains('active');
+                    
+                    // First, remove 'active' class from all cards
+                    accordionCards.forEach(c => c.classList.remove('active'));
 
-            const openConsultingBtn = document.getElementById('open-consulting-modal');
-            const openServicesBtn = document.getElementById('open-services-modal');
-            const openPrivacyBtn = document.getElementById('open-privacy-modal');
-
-            const closeButtons = document.querySelectorAll('.close-modal');
-            const interestedButtons = document.querySelectorAll('.interested-btn');
-
-            const allModals = [consultingModal, servicesModal, privacyModal];
-
-            const openModal = (modal) => {
-                if (!modal) return;
-                modal.classList.remove('invisible', 'opacity-0');
-                modal.querySelector('.modal-content').classList.remove('scale-95');
-                document.body.style.overflow = 'hidden'; // Prevent background scrolling
-            };
-
-            const closeModal = (modal) => {
-                if (!modal) return;
-                modal.classList.add('opacity-0');
-                modal.querySelector('.modal-content').classList.add('scale-95');
-                setTimeout(() => {
-                    modal.classList.add('invisible');
-                    // Only restore scrolling if no other modals are open
-                    if (!document.querySelector('.modal:not(.invisible)')) {
-                        document.body.style.overflow = '';
+                    // If the clicked card was not active, make it active
+                    if (!wasActive) {
+                        card.classList.add('active');
                     }
-                }, 300);
-            };
-            
-            const closeAllModals = () => allModals.forEach(closeModal);
-
-            openConsultingBtn.addEventListener('click', () => openModal(consultingModal));
-            openServicesBtn.addEventListener('click', () => openModal(servicesModal));
-            openPrivacyBtn.addEventListener('click', () => openModal(privacyModal));
-
-            closeButtons.forEach(btn => {
-                btn.addEventListener('click', () => closeAllModals());
-            });
-            
-            // Close modal when clicking on the backdrop
-            allModals.forEach(modal => {
-                 modal.addEventListener('click', (e) => {
-                    if (e.target === modal) {
-                        closeModal(modal);
+                });
+                
+                // This ensures that when a mouse leaves an active card, it stays open.
+                card.addEventListener('mouseleave', () => {
+                    if (!card.classList.contains('active')) {
+                        // The CSS :hover pseudo-class will handle showing/hiding on hover
+                        // This just makes sure we don't interfere with the active state
                     }
                 });
             });
-            
-            // Handle "I'm Interested" button click
-            interestedButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    closeAllModals();
-                    // Smooth scroll to contact section
-                    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-                });
+
+
+            // Services Toggle Logic
+            const consultingToggle = document.getElementById('consulting-toggle');
+            const servicesToggle = document.getElementById('services-toggle');
+            const consultingView = document.getElementById('consulting-view');
+            const servicesView = document.getElementById('services-view');
+
+            function showConsulting() {
+                consultingView.classList.remove('hidden');
+                servicesView.classList.add('hidden');
+                
+                consultingToggle.classList.add('bg-[#0091C6]', 'text-white');
+                consultingToggle.classList.remove('hover:bg-gray-700/50', 'text-gray-300');
+                servicesToggle.classList.remove('bg-[#0091C6]', 'text-white');
+                servicesToggle.classList.add('hover:bg-gray-700/50', 'text-gray-300');
+            }
+
+            function showServices() {
+                servicesView.classList.remove('hidden');
+                consultingView.classList.add('hidden');
+
+                servicesToggle.classList.add('bg-[#0091C6]', 'text-white');
+                servicesToggle.classList.remove('hover:bg-gray-700/50', 'text-gray-300');
+                consultingToggle.classList.remove('bg-[#0091C6]', 'text-white');
+                consultingToggle.classList.add('hover:bg-gray-700/50', 'text-gray-300');
+                 // Deactivate any open consulting cards when switching
+                document.querySelectorAll('#consulting-view .accordion-card').forEach(c => c.classList.remove('active'));
+            }
+
+            consultingToggle.addEventListener('click', () => {
+                showConsulting();
+                // Deactivate any open services cards when switching
+                document.querySelectorAll('#services-view .accordion-card').forEach(c => c.classList.remove('active'));
             });
 
-            // Close modal with Escape key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    closeAllModals();
-                }
+            servicesToggle.addEventListener('click', () => {
+                showServices();
+                 // Deactivate any open consulting cards when switching
+                document.querySelectorAll('#consulting-view .accordion-card').forEach(c => c.classList.remove('active'));
             });
+
+            // Contact Form Toggle Logic
+            const consultingFormToggle = document.getElementById('consulting-form-toggle');
+            const serviceFormToggle = document.getElementById('service-form-toggle');
+            const consultingForm = document.getElementById('consulting-form');
+            const serviceForm = document.getElementById('service-form');
+
+            consultingFormToggle.addEventListener('click', () => {
+                consultingForm.classList.remove('hidden');
+                serviceForm.classList.add('hidden');
+                consultingFormToggle.classList.add('bg-[#0091C6]', 'text-white');
+                consultingFormToggle.classList.remove('hover:bg-gray-700/50', 'text-gray-300');
+                serviceFormToggle.classList.remove('bg-[#0091C6]', 'text-white');
+                serviceFormToggle.classList.add('hover:bg-gray-700/50', 'text-gray-300');
+            });
+
+            serviceFormToggle.addEventListener('click', () => {
+                serviceForm.classList.remove('hidden');
+                consultingForm.classList.add('hidden');
+                serviceFormToggle.classList.add('bg-[#0091C6]', 'text-white');
+                serviceFormToggle.classList.remove('hover:bg-gray-700/50', 'text-gray-300');
+                consultingFormToggle.classList.remove('bg-[#0091C6]', 'text-white');
+                consultingFormToggle.classList.add('hover:bg-gray-700/50', 'text-gray-300');
+            });
+
+            // Form Submission Handler
+            function handleFormSubmit(form, formType) {
+                form.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+
+                    const statusEl = document.getElementById(formType + '-form-status');
+                    const submitBtn = form.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.textContent;
+
+                    // Show loading state
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Submitting...';
+                    submitBtn.classList.add('opacity-70');
+                    statusEl.classList.add('hidden');
+
+                    try {
+                        const formData = new FormData(form);
+                        const endpoint = formType === 'consulting' ? '/submit/consulting' : '/submit/service';
+                        const resp = await fetch('https://forms.bluecrane.pro' + endpoint, {
+                            method: 'POST',
+                            body: formData,
+                        });
+
+                        const result = await resp.json();
+
+                        statusEl.classList.remove('hidden');
+                        if (resp.ok && result.success) {
+                            statusEl.textContent = result.message;
+                            statusEl.className = 'text-center text-sm text-green-400 py-2';
+                            form.reset();
+                            // Reset Turnstile widget
+                            if (window.turnstile) {
+                                const widget = form.querySelector('.cf-turnstile');
+                                if (widget) turnstile.reset(widget);
+                            }
+                        } else {
+                            statusEl.textContent = result.error || 'Something went wrong. Please try again.';
+                            statusEl.className = 'text-center text-sm text-red-400 py-2';
+                        }
+                    } catch (err) {
+                        statusEl.classList.remove('hidden');
+                        statusEl.textContent = 'Network error. Please check your connection and try again.';
+                        statusEl.className = 'text-center text-sm text-red-400 py-2';
+                    } finally {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = originalText;
+                        submitBtn.classList.remove('opacity-70');
+                    }
+                });
+            }
+
+            handleFormSubmit(consultingForm, 'consulting');
+            handleFormSubmit(serviceForm, 'service');
+
         });
     </script>
 
 </body>
 </html>
-
 
 

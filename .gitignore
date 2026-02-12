@@ -63,6 +63,13 @@ venv.bak/
 *.swo
 *~
 
+# Project notes
+CLAUDE.md
+
+# Worker secrets & local state
+worker/.dev.vars
+.wrangler/
+
 # OS
 .DS_Store
 .DS_Store?
